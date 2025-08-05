@@ -105,6 +105,10 @@ app.use(
     }
 );
 
-app.listen(PORT);
+if (require.main === module) {
+    app.listen(PORT, () => {
+        logger.info(`Server is running on port ${PORT}`);
+    });
+}
 
 export default app;
