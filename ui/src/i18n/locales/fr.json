@@ -1,0 +1,254 @@
+{
+    "app": {
+        "name": "Répertoire des Employés",
+        "description": "Gérez les informations des employés de votre organisation"
+    },
+    "navigation": {
+        "dashboard": "Tableau de Bord",
+        "employees": "Employés",
+        "profile": "Profil",
+        "settings": "Paramètres",
+        "logout": "Déconnexion"
+    },
+    "auth": {
+        "login": {
+            "title": "Connectez-vous à votre compte",
+            "subtitle": "Bon retour ! Veuillez entrer vos détails",
+            "email": "Email",
+            "password": "Mot de passe",
+            "emailPlaceholder": "Entrez votre email",
+            "passwordPlaceholder": "Entrez votre mot de passe",
+            "signIn": "Se Connecter",
+            "signingIn": "Connexion en cours..."
+        },
+        "logout": "Déconnexion",
+        "email": "Email",
+        "password": "Mot de passe",
+        "loginButton": "Se Connecter",
+        "loginSuccess": "Connexion réussie !",
+        "loginFailed": "Échec de la connexion",
+        "logoutSuccess": "Déconnexion réussie",
+        "emailRequired": "L'email est requis",
+        "passwordRequired": "Le mot de passe est requis",
+        "invalidCredentials": "Email ou mot de passe invalide",
+        "sessionExpired": "Session expirée. Veuillez vous reconnecter",
+        "accessDenied": "Accès Refusé",
+        "accessDeniedMessage": "Vous n'avez pas la permission d'accéder à cette page. Veuillez contacter votre administrateur si vous pensez qu'il s'agit d'une erreur.",
+        "goBack": "Retour"
+    },
+    "dashboard": {
+        "welcome": "Bon retour, {{name}} ! 👋",
+        "welcomeSubtitle": "Voici ce qui se passe avec votre équipe aujourd'hui",
+        "stats": {
+            "totalEmployees": "Total des Employés",
+            "newHires": "Nouvelles Embauches",
+            "departments": "Départements"
+        },
+        "recentHires": {
+            "title": "Nouvelles Embauches",
+            "subtitle": "Nouveaux membres d'équipe qui ont rejoint récemment",
+            "started": "A commencé"
+        },
+        "departmentOverview": {
+            "title": "Aperçu des Départements",
+            "subtitle": "Répartition des employés par département",
+            "employees": "employés"
+        },
+        "recentActivity": {
+            "title": "Activité Récente",
+            "subtitle": "Dernières mises à jour et changements"
+        },
+        "activities": {
+            "joinedEngineering": "{{name}} a rejoint l'Ingénierie",
+            "updatedProfile": "{{name}} a mis à jour son profil",
+            "newDepartment": "Nouveau département créé : {{department}}",
+            "onboardingCompleted": "Intégration de l'employé terminée"
+        },
+        "timeAgo": {
+            "hoursAgo": "il y a {{count}} heure",
+            "hoursAgo_other": "il y a {{count}} heures",
+            "daysAgo": "il y a {{count}} jour",
+            "daysAgo_other": "il y a {{count}} jours"
+        }
+    },
+    "employees": {
+        "title": "Employés",
+        "subtitle": "Gérez les employés de votre organisation",
+        "actions": {
+            "create": "Créer un Employé",
+            "add": "Ajouter un Employé",
+            "edit": "Modifier l'Employé",
+            "delete": "Supprimer l'Employé",
+            "view": "Voir l'Employé",
+            "search": "Rechercher des employés",
+            "uploadPhoto": "Télécharger une Photo"
+        },
+        "filters": {
+            "department": "Département",
+            "location": "Localisation"
+        },
+        "table": {
+            "employee": "Employé",
+            "position": "Poste",
+            "department": "Département",
+            "location": "Localisation",
+            "status": "Statut",
+            "actions": "Actions"
+        },
+        "found": "{{count}} employé trouvé",
+        "found_other": "{{count}} employés trouvés",
+        "view": {
+            "edit": "Modifier",
+            "back": "Retour",
+            "contactInformation": "Informations de Contact",
+            "workInformation": "Informations de Travail",
+            "email": "Email",
+            "phone": "Téléphone",
+            "position": "Poste",
+            "hireDate": "Date d'Embauche",
+            "department": "Département",
+            "location": "Localisation",
+            "notAssigned": "Non Assigné",
+            "reportingStructure": "Structure de Reporting",
+            "reportsTo": "Rend Compte À",
+            "noManagerAssigned": "Aucun manager assigné",
+            "directReports": "Rapports Directs",
+            "permissions": "Permissions",
+            "noPermissionsAssigned": "Aucune permission assignée",
+            "employeeNotFound": "Employé non trouvé",
+            "failedToFetchEmployee": "Échec de récupération de l'employé"
+        },
+        "fields": {
+            "firstName": "Prénom",
+            "lastName": "Nom de Famille",
+            "email": "Email",
+            "password": "Mot de Passe",
+            "phone": "Téléphone",
+            "position": "Poste",
+            "hireDate": "Date d'Embauche",
+            "department": "Département",
+            "location": "Localisation",
+            "reportsTo": "Rend Compte À",
+            "permissions": "Permissions",
+            "profilePhoto": "Photo de Profil",
+            "selectDepartment": "Sélectionner un département",
+            "selectLocation": "Sélectionner une localisation",
+            "selectManager": "Sélectionner un manager",
+            "selectPermissions": "Sélectionner des permissions"
+        },
+        "messages": {
+            "createSuccess": "Employé créé avec succès",
+            "updateSuccess": "Employé mis à jour avec succès",
+            "deleteSuccess": "Employé supprimé avec succès",
+            "createFailed": "Échec de la création de l'employé",
+            "updateFailed": "Échec de la mise à jour de l'employé",
+            "deleteFailed": "Échec de la suppression de l'employé",
+            "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet employé ?",
+            "backToList": "Retour à la Liste",
+            "failedToLoadDepartments": "Échec du chargement des départements",
+            "failedToLoadLocations": "Échec du chargement des localisations",
+            "failedToLoadEmployees": "Échec du chargement des employés",
+            "failedToLoadPermissions": "Échec du chargement des permissions",
+            "failedToFetchEmployee": "Échec de récupération de l'employé"
+        },
+        "validation": {
+            "firstNameRequired": "Le prénom est requis",
+            "lastNameRequired": "Le nom de famille est requis",
+            "emailRequired": "L'email est requis",
+            "emailInvalid": "Format d'email invalide",
+            "passwordRequired": "Le mot de passe est requis",
+            "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères",
+            "phoneRequired": "Le numéro de téléphone est requis",
+            "phoneInvalid": "Le téléphone doit être au format E.164 (ex: +96170123456)",
+            "positionRequired": "Le poste est requis",
+            "hireDateRequired": "La date d'embauche est requise",
+            "departmentRequired": "Le département est requis",
+            "locationRequired": "La localisation est requise"
+        }
+    },
+    "common": {
+        "theme": {
+            "light": "Clair",
+            "dark": "Sombre",
+            "switchToLight": "Passer au thème clair",
+            "switchToDark": "Passer au thème sombre"
+        },
+        "language": {
+            "switchToEnglish": "Passer à l'anglais",
+            "switchToFrench": "Passer au français"
+        },
+        "actions": {
+            "add": "Ajouter",
+            "edit": "Modifier",
+            "delete": "Supprimer",
+            "save": "Enregistrer",
+            "cancel": "Annuler",
+            "search": "Rechercher",
+            "filter": "Filtrer",
+            "export": "Exporter",
+            "import": "Importer",
+            "refresh": "Actualiser",
+            "view": "Voir",
+            "create": "Créer",
+            "update": "Mettre à jour",
+            "submit": "Soumettre",
+            "reset": "Réinitialiser",
+            "clear": "Effacer",
+            "close": "Fermer",
+            "open": "Ouvrir",
+            "back": "Retour",
+            "next": "Suivant",
+            "previous": "Précédent",
+            "confirm": "Confirmer",
+            "reject": "Rejeter",
+            "approve": "Approuver",
+            "uploadPhoto": "Télécharger une Photo",
+            "changePhoto": "Changer la Photo",
+            "showFilters": "Afficher les Filtres",
+            "hideFilters": "Masquer les Filtres",
+            "expandSidebar": "Agrandir la Barre Latérale",
+            "collapseSidebar": "Réduire la Barre Latérale"
+        },
+        "status": {
+            "active": "Actif",
+            "inactive": "Inactif",
+            "pending": "En attente",
+            "approved": "Approuvé",
+            "rejected": "Rejeté",
+            "draft": "Brouillon",
+            "published": "Publié",
+            "archived": "Archivé"
+        },
+        "validation": {
+            "required": "Ce champ est obligatoire",
+            "email": "Veuillez entrer une adresse email valide",
+            "minLength": "Doit contenir au moins {{min}} caractères",
+            "maxLength": "Ne doit pas dépasser {{max}} caractères",
+            "pattern": "Veuillez entrer un format valide",
+            "numeric": "Veuillez entrer un nombre valide",
+            "alphanumeric": "Veuillez entrer uniquement des lettres et des chiffres",
+            "phone": "Veuillez entrer un numéro de téléphone valide",
+            "url": "Veuillez entrer une URL valide",
+            "date": "Veuillez entrer une date valide",
+            "time": "Veuillez entrer une heure valide",
+            "dateTime": "Veuillez entrer une date et heure valide",
+            "strongPassword": "Le mot de passe doit contenir au moins 8 caractères, incluant majuscules, minuscules, chiffres et caractères spéciaux"
+        },
+        "messages": {
+            "loading": "Chargement...",
+            "noData": "Aucune donnée disponible",
+            "error": "Une erreur s'est produite",
+            "success": "Opération terminée avec succès",
+            "warning": "Avertissement",
+            "info": "Information",
+            "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet élément ?",
+            "unsavedChanges": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir quitter ?"
+        },
+        "table": {
+            "actions": "Actes"
+        },
+        "or": "ou",
+        "welcome": "Bienvenue",
+        "viewProfile": "Voir le Profil"
+    }
+}

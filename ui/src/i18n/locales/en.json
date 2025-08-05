@@ -1,0 +1,254 @@
+{
+    "app": {
+        "name": "Employee Directory",
+        "description": "Manage your organization's employee information"
+    },
+    "navigation": {
+        "dashboard": "Dashboard",
+        "employees": "Employees",
+        "profile": "Profile",
+        "settings": "Settings",
+        "logout": "Logout"
+    },
+    "auth": {
+        "login": {
+            "title": "Sign in to your account",
+            "subtitle": "Welcome back! Please enter your details",
+            "email": "Email",
+            "password": "Password",
+            "emailPlaceholder": "Enter your email",
+            "passwordPlaceholder": "Enter your password",
+            "signIn": "Sign In",
+            "signingIn": "Signing in..."
+        },
+        "logout": "Logout",
+        "email": "Email",
+        "password": "Password",
+        "loginButton": "Sign In",
+        "loginSuccess": "Login successful!",
+        "loginFailed": "Login failed",
+        "logoutSuccess": "Logged out successfully",
+        "emailRequired": "Email is required",
+        "passwordRequired": "Password is required",
+        "invalidCredentials": "Invalid email or password",
+        "sessionExpired": "Session expired. Please login again",
+        "accessDenied": "Access Denied",
+        "accessDeniedMessage": "You don't have permission to access this page. Please contact your administrator if you believe this is an error.",
+        "goBack": "Go Back"
+    },
+    "dashboard": {
+        "welcome": "Welcome back, {{name}}! 👋",
+        "welcomeSubtitle": "Here's what's happening with your team today",
+        "stats": {
+            "totalEmployees": "Total Employees",
+            "newHires": "New Hires",
+            "departments": "Departments"
+        },
+        "recentHires": {
+            "title": "Recent Hires",
+            "subtitle": "New team members who joined recently",
+            "started": "Started"
+        },
+        "departmentOverview": {
+            "title": "Department Overview",
+            "subtitle": "Employee distribution by department",
+            "employees": "employees"
+        },
+        "recentActivity": {
+            "title": "Recent Activity",
+            "subtitle": "Latest updates and changes"
+        },
+        "activities": {
+            "joinedEngineering": "{{name}} joined Engineering",
+            "updatedProfile": "{{name}} updated their profile",
+            "newDepartment": "New department created: {{department}}",
+            "onboardingCompleted": "Employee onboarding completed"
+        },
+        "timeAgo": {
+            "hoursAgo": "{{count}} hour ago",
+            "hoursAgo_other": "{{count}} hours ago",
+            "daysAgo": "{{count}} day ago",
+            "daysAgo_other": "{{count}} days ago"
+        }
+    },
+    "employees": {
+        "title": "Employees",
+        "subtitle": "Manage your organization's employees",
+        "actions": {
+            "add": "Add Employee",
+            "search": "Search employees",
+            "create": "Add Employee",
+            "edit": "Edit Employee",
+            "view": "View Employee",
+            "delete": "Delete Employee",
+            "uploadPhoto": "Upload Photo"
+        },
+        "filters": {
+            "department": "Department",
+            "location": "Location"
+        },
+        "table": {
+            "employee": "Employee",
+            "position": "Position",
+            "department": "Department",
+            "location": "Location",
+            "status": "Status",
+            "actions": "Actions"
+        },
+        "found": "{{count}} employee found",
+        "found_other": "{{count}} employees found",
+        "view": {
+            "edit": "Edit",
+            "back": "Back",
+            "contactInformation": "Contact Information",
+            "workInformation": "Work Information",
+            "email": "Email",
+            "phone": "Phone",
+            "position": "Position",
+            "hireDate": "Hire Date",
+            "department": "Department",
+            "location": "Location",
+            "notAssigned": "Not Assigned",
+            "reportingStructure": "Reporting Structure",
+            "reportsTo": "Reports To",
+            "noManagerAssigned": "No manager assigned",
+            "directReports": "Direct Reports",
+            "permissions": "Permissions",
+            "noPermissionsAssigned": "No permissions assigned",
+            "employeeNotFound": "Employee not found",
+            "failedToFetchEmployee": "Failed to fetch employee"
+        },
+        "fields": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email",
+            "password": "Password",
+            "phone": "Phone",
+            "position": "Position",
+            "hireDate": "Hire Date",
+            "department": "Department",
+            "location": "Location",
+            "reportsTo": "Reports To",
+            "permissions": "Permissions",
+            "profilePhoto": "Profile Photo",
+            "selectDepartment": "Select department",
+            "selectLocation": "Select location",
+            "selectManager": "Select manager",
+            "selectPermissions": "Select permissions"
+        },
+        "messages": {
+            "createSuccess": "Employee created successfully",
+            "updateSuccess": "Employee updated successfully",
+            "deleteSuccess": "Employee deleted successfully",
+            "createFailed": "Failed to create employee",
+            "updateFailed": "Failed to update employee",
+            "deleteFailed": "Failed to delete employee",
+            "confirmDelete": "Are you sure you want to delete this employee?",
+            "backToList": "Back to List",
+            "failedToLoadDepartments": "Failed to load departments",
+            "failedToLoadLocations": "Failed to load locations",
+            "failedToLoadEmployees": "Failed to load employees",
+            "failedToLoadPermissions": "Failed to load permissions",
+            "failedToFetchEmployee": "Failed to fetch employee"
+        },
+        "validation": {
+            "firstNameRequired": "First name is required",
+            "lastNameRequired": "Last name is required",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Invalid email format",
+            "passwordRequired": "Password is required",
+            "passwordMinLength": "Password must be at least 8 characters",
+            "phoneRequired": "Phone number is required",
+            "phoneInvalid": "Phone must be in E.164 format (e.g., +96170123456)",
+            "positionRequired": "Position is required",
+            "hireDateRequired": "Hire date is required",
+            "departmentRequired": "Department is required",
+            "locationRequired": "Location is required"
+        }
+    },
+    "common": {
+        "theme": {
+            "light": "Light",
+            "dark": "Dark",
+            "switchToLight": "Switch to Light Theme",
+            "switchToDark": "Switch to Dark Theme"
+        },
+        "language": {
+            "switchToEnglish": "Switch to English",
+            "switchToFrench": "Switch to French"
+        },
+        "actions": {
+            "add": "Add",
+            "edit": "Edit",
+            "delete": "Delete",
+            "save": "Save",
+            "cancel": "Cancel",
+            "search": "Search",
+            "filter": "Filter",
+            "export": "Export",
+            "import": "Import",
+            "refresh": "Refresh",
+            "view": "View",
+            "create": "Create",
+            "update": "Update",
+            "submit": "Submit",
+            "reset": "Reset",
+            "clear": "Clear",
+            "close": "Close",
+            "open": "Open",
+            "back": "Back",
+            "next": "Next",
+            "previous": "Previous",
+            "confirm": "Confirm",
+            "reject": "Reject",
+            "approve": "Approve",
+            "uploadPhoto": "Upload Photo",
+            "changePhoto": "Change Photo",
+            "showFilters": "Show Filters",
+            "hideFilters": "Hide Filters",
+            "expandSidebar": "Expand Sidebar",
+            "collapseSidebar": "Collapse Sidebar"
+        },
+        "status": {
+            "active": "Active",
+            "inactive": "Inactive",
+            "pending": "Pending",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "draft": "Draft",
+            "published": "Published",
+            "archived": "Archived"
+        },
+        "validation": {
+            "required": "This field is required",
+            "email": "Please enter a valid email address",
+            "minLength": "Must be at least {{min}} characters",
+            "maxLength": "Must be no more than {{max}} characters",
+            "pattern": "Please enter a valid format",
+            "numeric": "Please enter a valid number",
+            "alphanumeric": "Please enter only letters and numbers",
+            "phone": "Please enter a valid phone number",
+            "url": "Please enter a valid URL",
+            "date": "Please enter a valid date",
+            "time": "Please enter a valid time",
+            "dateTime": "Please enter a valid date and time",
+            "strongPassword": "Password must contain at least 8 characters, including uppercase, lowercase, number and special character"
+        },
+        "messages": {
+            "loading": "Loading...",
+            "noData": "No data available",
+            "error": "An error occurred",
+            "success": "Operation completed successfully",
+            "warning": "Warning",
+            "info": "Information",
+            "confirmDelete": "Are you sure you want to delete this item?",
+            "unsavedChanges": "You have unsaved changes. Are you sure you want to leave?"
+        },
+        "table": {
+            "actions": "Actions"
+        },
+        "or": "or",
+        "welcome": "Welcome",
+        "viewProfile": "View Profile"
+    }
+}

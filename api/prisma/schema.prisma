@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model Employee {
+    id             Int       @id @default(autoincrement())
+    email          String    @unique
+    password       String
+    firstName      String
+    lastName       String
+    phone          String?
+    position       String
+    hireDate       DateTime
+    deactivatedAt  DateTime?
+    deactivatedBy  Int?
+    reportsToId    Int?
+    departmentId   Int?
+    locationId     Int?
+    profileAssetId Int?      @unique
+    createdAt      DateTime  @default(now())
+    updatedAt      DateTime  @updatedAt
+
+    // Self-reference for reporting hierarchy
+    reportsTo Employee?  @relation("EmployeeReports", fields: [reportsToId], references: [id])
+    reports   Employee[] @relation("EmployeeReports")
+
+    // Self-reference for deactivation tracking
+    deactivatedByEmployee Employee?  @relation("EmployeeDeactivations", fields: [deactivatedBy], references: [id])
+    deactivatedEmployees  Employee[] @relation("EmployeeDeactivations")
+
+    // Relationships
+    department   Department? @relation(fields: [departmentId], references: [id])
+    location     Location?   @relation(fields: [locationId], references: [id])
+    profileAsset Asset?      @relation(fields: [profileAssetId], references: [id])
+
+    // Many-to-many permissions
+    permissions EmployeePermission[]
+
+    // One-to-many refresh tokens
+    refreshTokens RefreshToken[]
+
+    @@map("employees")
+}
+
+model Department {
+    id          Int      @id @default(autoincrement())
+    name        String   @unique
+    description String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    // One-to-many employees
+    employees Employee[]
+
+    @@map("departments")
+}
+
+model Location {
+    id         Int      @id @default(autoincrement())
+    name       String   @unique
+    address    String?
+    city       String?
+    country    String?
+    postalCode String?
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+
+    // One-to-many employees
+    employees Employee[]
+
+    @@map("locations")
+}
+
+model Permission {
+    id          Int      @id @default(autoincrement())
+    name        String   @unique
+    description String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    // Many-to-many employees
+    employees EmployeePermission[]
+
+    @@map("permissions")
+}
+
+model EmployeePermission {
+    id           Int      @id @default(autoincrement())
+    employeeId   Int
+    permissionId Int
+    createdAt    DateTime @default(now())
+
+    // Relationships
+    employee   Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+    permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+    @@unique([employeeId, permissionId])
+    @@map("employee_permissions")
+}
+
+model RefreshToken {
+    id         Int      @id @default(autoincrement())
+    employeeId Int
+    token      String   @unique
+    expiresAt  DateTime
+    isRevoked  Boolean  @default(false)
+    createdAt  DateTime @default(now())
+
+    // One-to-many employee
+    employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+    @@map("refresh_tokens")
+}
+
+model Asset {
+    id            Int      @id @default(autoincrement())
+    s3Key         String   @unique
+    s3Bucket      String
+    originalName  String
+    mimeType      String
+    size          Int
+    url           String?
+    cloudFrontUrl String?
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+
+    // One-to-one employee (profile photo)
+    employee Employee?
+
+    @@map("assets")
+}

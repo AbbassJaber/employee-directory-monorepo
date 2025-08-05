@@ -1,0 +1,30 @@
+{
+    "name": "employee-directory-monorepo",
+    "version": "1.0.0",
+    "description": "Employee Directory Monorepo",
+    "private": true,
+    "workspaces": [
+        "api",
+        "ui"
+    ],
+    "scripts": {
+        "dev": "concurrently \"npm run dev:api\" \"npm run dev:ui\"",
+        "dev:api": "cd api && npm run dev",
+        "dev:ui": "cd ui && npm run dev",
+        "build:ui": "cd ui && npm run build",
+        "install:all": "npm install && cd api && npm install && cd ../ui && npm install",
+        "db:setup": "cd api && npm run db:generate && npm run db:migrate && npm run db:seed",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "prettier": "^3.1.0"
+    },
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=8.0.0"
+    },
+    "keywords": [],
+    "author": "AbbassJaber",
+    "license": "MIT"
+}

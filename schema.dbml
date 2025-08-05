@@ -1,0 +1,94 @@
+Table Employee {
+  id Int [pk, increment]
+  email String [unique, not null]
+  password String [not null]
+  firstName String [not null]
+  lastName String [not null]
+  phone String
+  position String [not null]
+  hireDate DateTime [not null]
+  deactivatedAt DateTime
+  deactivatedBy Int [ref: > Employee.id]
+  reportsToId Int [ref: > Employee.id]
+  departmentId Int [ref: > Department.id]
+  locationId Int [ref: > Location.id]
+  profileAssetId Int [ref: > Asset.id]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [default: `now()`, not null]
+  
+  indexes {
+    (email)
+    (departmentId)
+    (locationId)
+    (reportsToId)
+  }
+}
+
+Table Department {
+  id Int [pk, increment]
+  name String [unique, not null]
+  description String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [default: `now()`, not null]
+}
+
+Table Location {
+  id Int [pk, increment]
+  name String [unique, not null]
+  address String
+  city String
+  country String
+  postalCode String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [default: `now()`, not null]
+}
+
+Table Permission {
+  id Int [pk, increment]
+  name String [unique, not null]
+  description String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [default: `now()`, not null]
+}
+
+Table EmployeePermission {
+  id Int [pk, increment]
+  employeeId Int [ref: > Employee.id, not null]
+  permissionId Int [ref: > Permission.id, not null]
+  createdAt DateTime [default: `now()`, not null]
+  
+  indexes {
+    (employeeId, permissionId) [unique]
+  }
+}
+
+Table RefreshToken {
+  id Int [pk, increment]
+  employeeId Int [ref: > Employee.id, not null]
+  token String [unique, not null]
+  expiresAt DateTime [not null]
+  isRevoked Boolean [default: false, not null]
+  createdAt DateTime [default: `now()`, not null]
+  
+  indexes {
+    (employeeId)
+    (token)
+  }
+}
+
+Table Asset {
+  id Int [pk, increment]
+  s3Key String [unique, not null]
+  s3Bucket String [not null]
+  originalName String [not null]
+  mimeType String [not null]
+  size Int [not null]
+  url String
+  cloudFrontUrl String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [default: `now()`, not null]
+  
+  indexes {
+    (s3Key)
+  }
+}
