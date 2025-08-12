@@ -124,19 +124,30 @@ Edit `api/.env` with your configuration:
 # Database
 DATABASE_URL="mysql://username:password@localhost:3306/employee_directory"
 
-# JWT
-JWT_SECRET="your-super-secret-jwt-key"
-JWT_REFRESH_SECRET="your-super-secret-refresh-key"
-
-# AWS S3 (for file uploads)
-AWS_ACCESS_KEY_ID="your-aws-access-key"
-AWS_SECRET_ACCESS_KEY="your-aws-secret-key"
-AWS_REGION="us-east-1"
-AWS_S3_BUCKET="your-s3-bucket-name"
-
 # Server
 PORT=5001
 NODE_ENV=development
+HOST=localhost
+
+# JWT
+JWT_ACCESS_SECRET=your-super-secret-access-token-key-here
+JWT_ACCESS_EXPIRES_IN=15m
+JWT_REFRESH_EXPIRES_IN=3600
+
+# AWS
+AWS_ACCESS_KEY_ID=your-aws-access-key
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+AWS_REGION=us-east-1
+AWS_S3_BUCKET=your-employee-directory-bucket
+AWS_CLOUDFRONT_DOMAIN=your-cloudfront-domain.cloudfront.net
+
+# CORS
+CORS_ORIGIN=http://localhost:5173
+
+# Security
+BCRYPT_ROUNDS=12
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
 ```
 
 #### Frontend (UI)

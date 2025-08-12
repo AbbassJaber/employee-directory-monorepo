@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Employee, EmployeePermission } from '@/features/employees/types';
 import { authService } from '@/services/auth.service';
+import { resetLogoutFlag } from '@/services/api';
 import toast from 'react-hot-toast';
 import { useConfigStore } from './configStore';
 
@@ -51,7 +52,7 @@ export const useAuthStore = create<AuthStore>()(
                             isLoading: false,
                             error: null,
                         });
-
+                        resetLogoutFlag();
                         toast.success('Login successful!');
                     } else {
                         set({
