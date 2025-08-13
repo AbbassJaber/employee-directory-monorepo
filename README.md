@@ -2,12 +2,6 @@
 
 A modern, full-stack employee management system built with React, Node.js, and MySQL. This monorepo contains both the frontend UI and backend API for managing employee data, departments, locations, and permissions.
 
-## 🌐 Live Preview
-
-**Live Application**: [https://www.employee-directory.online](https://www.employee-directory.online)
-
-Experience the full application with all features including authentication, employee management, and permission-based access control.
-
 ## 🚀 Deployment
 
 ### **Current Deployment Architecture**
