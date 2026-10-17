@@ -2,6 +2,12 @@
 
 A modern, full-stack employee management system built with React, Node.js, and PostgreSQL. This monorepo contains both the frontend UI and backend API for managing employee data, departments, locations, and permissions.
 
+## 🌐 Live Preview
+
+**Live Application**: [https://employee-directory-demo.onrender.com](https://employee-directory-demo.onrender.com)
+
+Sign in with `ceo@company.com` / `ceo123456`. The demo runs on a free instance: the first visit after a quiet period can take up to a minute to wake it, and the data resets on every wake.
+
 ## 🚀 Deployment
 
 ### **Live Demo (Render + Neon)**
