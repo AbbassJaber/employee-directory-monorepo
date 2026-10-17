@@ -6,6 +6,10 @@ set -eu
 export CORS_ORIGIN="${CORS_ORIGIN:-${RENDER_EXTERNAL_URL:-}}"
 export HOST="${HOST:-${RENDER_EXTERNAL_HOSTNAME:-localhost}}"
 
+# One instance migrates, so Prisma's advisory lock is not needed; through a connection
+# pooler it can be left held and block every later deploy.
+export PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK="${PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK:-1}"
+
 if [ "${DEMO_RESET_ON_START:-false}" = "true" ]; then
   echo "[start] resetting demo database (migrations + seed)"
   npx prisma migrate reset --force --skip-generate
