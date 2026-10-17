@@ -85,6 +85,7 @@ Table Asset {
   size Int [not null]
   url String
   cloudFrontUrl String
+  data Bytes
   createdAt DateTime [default: `now()`, not null]
   updatedAt DateTime [default: `now()`, not null]
   

@@ -5,6 +5,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import path from 'path';
 import { handleError } from '@/utils/errors';
 import logger from '@/utils/logger';
 import { setupSwagger } from '@/swagger';
@@ -14,6 +15,12 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env['PORT'];
+const WEB_DIST_DIR = process.env['WEB_DIST_DIR'];
+
+// Behind a reverse proxy (e.g. Render), so rate limiting sees the client IP
+if (process.env['TRUST_PROXY']) {
+    app.set('trust proxy', Number(process.env['TRUST_PROXY']));
+}
 
 // Security middleware
 app.use(
@@ -21,7 +28,12 @@ app.use(
         contentSecurityPolicy: {
             directives: {
                 defaultSrc: ["'self'"],
-                styleSrc: ["'self'", "'unsafe-inline'"],
+                styleSrc: [
+                    "'self'",
+                    "'unsafe-inline'",
+                    'https://fonts.googleapis.com',
+                ],
+                fontSrc: ["'self'", 'data:', 'https://fonts.gstatic.com'],
                 scriptSrc: ["'self'"],
                 imgSrc: ["'self'", 'data:', 'https:'],
             },
@@ -38,6 +50,11 @@ app.use(
         allowedHeaders: ['Content-Type', 'Authorization'],
     })
 );
+
+// Serve the built UI from the same origin when configured
+if (WEB_DIST_DIR) {
+    app.use(express.static(WEB_DIST_DIR, { index: false }));
+}
 
 // Rate limiting
 const limiter = rateLimit({
@@ -84,6 +101,13 @@ app.use('/api/v1', v1Router);
 
 // Setup Swagger documentation
 setupSwagger(app);
+
+// Client-side routes fall back to the UI's index.html
+if (WEB_DIST_DIR) {
+    app.get(/^\/(?!api\/|docs|health).*/, (_, res) => {
+        res.sendFile(path.join(WEB_DIST_DIR, 'index.html'));
+    });
+}
 
 // 404 handler
 app.use('*', (req, res) => {

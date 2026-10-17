@@ -26,16 +26,18 @@ const logger = winston.createLogger({
     ],
 });
 
-// If we're not in production, log to the console as well
-if (process.env['NODE_ENV'] !== ENV.PROD) {
-    logger.add(
-        new winston.transports.Console({
-            format: winston.format.combine(
-                winston.format.colorize(),
-                winston.format.simple()
-            ),
-        })
-    );
-}
+// Log to the console as well: readable in development, JSON in production
+logger.add(
+    new winston.transports.Console(
+        process.env['NODE_ENV'] === ENV.PROD
+            ? {}
+            : {
+                  format: winston.format.combine(
+                      winston.format.colorize(),
+                      winston.format.simple()
+                  ),
+              }
+    )
+);
 
 export default logger;

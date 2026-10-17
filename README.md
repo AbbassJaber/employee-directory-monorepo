@@ -1,10 +1,22 @@
 # Employee Directory
 
-A modern, full-stack employee management system built with React, Node.js, and MySQL. This monorepo contains both the frontend UI and backend API for managing employee data, departments, locations, and permissions.
+A modern, full-stack employee management system built with React, Node.js, and PostgreSQL. This monorepo contains both the frontend UI and backend API for managing employee data, departments, locations, and permissions.
 
 ## 🚀 Deployment
 
-### **Current Deployment Architecture**
+### **Live Demo (Render + Neon)**
+
+The demo runs as a single Docker service on [Render](https://render.com) (free plan), defined by `render.yaml` and `deploy/render/`:
+
+- **One origin**: the API serves the built UI, so the `sameSite=strict` refresh-token cookie works without cross-site settings
+- **Database**: [Neon](https://neon.tech) serverless PostgreSQL
+- **Profile photos**: stored in the database (`STORAGE_DRIVER=database`) and served from `/api/v1/assets/:key`
+- **Demo reset**: `DEMO_RESET_ON_START=true` re-runs migrations and the seed on every start, so each wake from sleep starts with clean data
+- **Deploy**: Render → New → Blueprint → this repository, then set `DATABASE_URL` to the Neon connection string; pushes to `main` redeploy
+
+Sign in with `ceo@company.com` / `ceo123456`. The first request after a quiet period can take up to a minute while the free instance wakes up.
+
+### **Original AWS Deployment**
 
 #### **Frontend Deployment**
 
@@ -37,9 +49,9 @@ A modern, full-stack employee management system built with React, Node.js, and M
 ### Backend (Node.js + Express)
 
 - **RESTful API**: Express.js with TypeScript
-- **Database**: MySQL with Prisma ORM
+- **Database**: PostgreSQL with Prisma ORM
 - **Authentication**: JWT with refresh token rotation
-- **File Storage**: AWS S3 integration for file uploads
+- **File Storage**: AWS S3 integration for file uploads, or the database (`STORAGE_DRIVER=database`)
 - **API Documentation**: Swagger/OpenAPI documentation
 - **Security**: Helmet, CORS, rate limiting, input validation
 - **Logging**: Winston for structured logging
@@ -84,7 +96,7 @@ Before you begin, ensure you have the following installed:
 
 - **Node.js** (>= 18.0.0)
 - **npm** (>= 8.0.0)
-- **MySQL** (>= 8.0)
+- **PostgreSQL** (>= 14)
 - **Git**
 
 ## 🛠️ Installation & Setup
@@ -116,7 +128,7 @@ Edit `api/.env` with your configuration:
 
 ```env
 # Database
-DATABASE_URL="mysql://username:password@localhost:3306/employee_directory"
+DATABASE_URL="postgresql://username:password@localhost:5432/employee_directory"
 
 # Server
 PORT=5001
@@ -126,7 +138,10 @@ HOST=localhost
 # JWT
 JWT_ACCESS_SECRET=your-super-secret-access-token-key-here
 JWT_ACCESS_EXPIRES_IN=15m
-JWT_REFRESH_EXPIRES_IN=3600
+JWT_REFRESH_EXPIRES_IN=604800000 # milliseconds (7 days)
+
+# File storage: s3 (default) or database
+STORAGE_DRIVER=s3
 
 # AWS
 AWS_ACCESS_KEY_ID=your-aws-access-key
@@ -154,7 +169,7 @@ cp env.example .env
 Edit `ui/.env` with your configuration:
 
 ```env
-VITE_API_BASE_URL=http://localhost:5001/api/v1
+VITE_API_URL=http://localhost:5001/api
 ```
 
 ### 4. Database Setup
